@@ -363,7 +363,9 @@ function validate() {
   const msgs = {};
   if (!d.nombre) { errs.nombre = true; msgs.nombre = "El nombre es obligatorio"; }
   if (!d.apellido1) { errs.apellido1 = true; msgs.apellido1 = "El primer apellido es obligatorio"; }
+  if (!d.sexo) { errs.sexo = true; msgs.sexo = "El sexo es obligatorio"; }
   if (!d.fechaNacimiento) { errs.fechaNacimiento = true; msgs.fechaNacimiento = "La fecha de nacimiento es obligatoria"; }
+  if (!d.nacionalidad) { errs.nacionalidad = true; msgs.nacionalidad = "La nacionalidad es obligatoria"; }
   if (!d.numeroDocumento) { errs.numeroDocumento = true; msgs.numeroDocumento = "El número de documento es obligatorio"; }
   if (d.tipoDocumento === "NIF" && d.numeroDocumento) {
     const r = validarNIF(d.numeroDocumento);
@@ -479,14 +481,15 @@ function render() {
         </div>
       </div>
       <div class="field-row">
-        <div class="field">
-          <label>Sexo</label>
+        <div class="field${fc("sexo")}">
+          <label>Sexo<span class="req">*</span></label>
           <select onchange="update('sexo',this.value)">
             <option value="" ${!d.sexo?"selected":""}>— Seleccionar —</option>
             <option value="H" ${d.sexo==="H"?"selected":""}>Hombre</option>
             <option value="M" ${d.sexo==="M"?"selected":""}>Mujer</option>
             <option value="O" ${d.sexo==="O"?"selected":""}>Otro</option>
           </select>
+          ${fm("sexo")}
         </div>
         <div class="field${fc("fechaNacimiento")}">
           <label>Fecha nacimiento<span class="req">*</span></label>
@@ -518,9 +521,10 @@ function render() {
           ${fm("fechaNacimiento")}
         </div>
       </div>
-      <div class="field">
-        <label>Nacionalidad</label>
+      <div class="field${fc("nacionalidad")}">
+        <label>Nacionalidad<span class="req">*</span></label>
         <select onchange="update('nacionalidad',this.value)">${nacOptions}</select>
+        ${fm("nacionalidad")}
       </div>
     </div>
 
