@@ -405,7 +405,8 @@ async function submit() {
   state.error = "";
   render();
   try {
-    const payload = { ...state.data, estanciaId };
+    const viajeroId = estanciaId + "_" + (state.data.numeroDocumento || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+    const payload = { ...state.data, estanciaId, viajeroId };
     await fetch(APPS_SCRIPT_URL, {
       method: "POST",
       mode: "no-cors",
