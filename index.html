@@ -274,6 +274,22 @@ function validarNIE(nie) {
   return { ok: true };
 }
 
+function validarSoporte(tipo, soporte) {
+  if (!soporte) {
+    if (tipo === "NIF" || tipo === "NIE") return { ok: false, error: "El número de soporte es obligatorio para " + tipo + "." };
+    return { ok: true };
+  }
+  const clean = soporte.trim().toUpperCase();
+  if (clean.length > 9) return { ok: false, error: "El número de soporte no puede tener más de 9 caracteres (tiene " + clean.length + ")." };
+  if (tipo === "NIF") {
+    if (!/^[A-Z]{3}\d{6}$/.test(clean)) return { ok: false, error: "Formato de soporte incorrecto para DNI. Debe ser 3 letras + 6 números (ej: BAH345212)." };
+  }
+  if (tipo === "NIE") {
+    if (!/^[EC]\d{8}$/.test(clean)) return { ok: false, error: "Formato de soporte incorrecto para NIE. Debe ser E o C + 8 números (ej: E12345678)." };
+  }
+  return { ok: true };
+}
+
 // ─── State ───
 const state = {
   screen: "form",
@@ -371,13 +387,14 @@ function validate() {
     const r = validarNIF(d.numeroDocumento);
     if (!r.ok) { errs.numeroDocumento = true; msgs.numeroDocumento = r.error; }
     if (!d.apellido2) { errs.apellido2 = true; msgs.apellido2 = "El segundo apellido es obligatorio para DNI/NIF"; }
-    if (!d.numeroSoporte) { errs.numeroSoporte = true; msgs.numeroSoporte = "El número de soporte es obligatorio para DNI/NIF"; }
   }
   if (d.tipoDocumento === "NIE" && d.numeroDocumento) {
     const r = validarNIE(d.numeroDocumento);
     if (!r.ok) { errs.numeroDocumento = true; msgs.numeroDocumento = r.error; }
-    if (!d.numeroSoporte) { errs.numeroSoporte = true; msgs.numeroSoporte = "El número de soporte es obligatorio para NIE"; }
   }
+  // Validate soporte
+  const sopResult = validarSoporte(d.tipoDocumento, d.numeroSoporte);
+  if (!sopResult.ok) { errs.numeroSoporte = true; msgs.numeroSoporte = sopResult.error; }
   if (d.pais === "ESP" && !d.codigoMunicipio) { errs.codigoMunicipio = true; msgs.codigoMunicipio = "Selecciona provincia y municipio"; }
   if (!d.codigoPostal) { errs.codigoPostal = true; msgs.codigoPostal = "El código postal es obligatorio"; }
   if (!d.domicilio) { errs.domicilio = true; msgs.domicilio = "La dirección es obligatoria"; }
@@ -548,7 +565,7 @@ function render() {
         </div>
         <div class="field${fc("numeroSoporte")}">
           <label>Nº soporte${(d.tipoDocumento==="NIF"||d.tipoDocumento==="NIE")?'<span class="req">*</span>':""}</label>
-          <input type="text" value="${d.numeroSoporte}" placeholder="Ej: BAH123456" onchange="update('numeroSoporte',this.value)">
+          <input type="text" value="${d.numeroSoporte}" placeholder="Ej: BAH345212" maxlength="9" onchange="update('numeroSoporte',this.value)">
           ${fm("numeroSoporte")}
         </div>
       </div>
