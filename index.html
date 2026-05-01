@@ -203,58 +203,39 @@ body {
     <h3 style="margin:0 0 8px;font-size:15px;color:#701E37;">¿Dónde está el número de soporte?</h3>
     <p style="margin:0 0 14px;font-size:12px;color:#555;line-height:1.5;">El número de soporte (IDESP) se encuentra en el <strong>anverso</strong> de tu DNI, debajo de la fecha de nacimiento. Son <strong>3 letras + 6 números</strong> (ej: BAH345212).</p>
     <svg viewBox="0 0 400 252" xmlns="http://www.w3.org/2000/svg" style="width:100%;border-radius:10px;border:1px solid #ddd;">
-      <!-- Card background -->
       <defs>
-        <linearGradient id="cardGrad" x1="0" y1="0" x2="400" y2="252" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#d4e4f7"/>
-          <stop offset="100%" stop-color="#b8cfe8"/>
-        </linearGradient>
+        <linearGradient id="cg" x1="0" y1="0" x2="400" y2="252" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4e4f7"/><stop offset="100%" stop-color="#b8cfe8"/></linearGradient>
+        <marker id="ah" markerWidth="8" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#D64545"/></marker>
       </defs>
-      <rect width="400" height="252" rx="14" fill="url(#cardGrad)"/>
-      <!-- Top bar -->
-      <rect x="0" y="0" width="400" height="36" rx="14" fill="#1a3a6b"/>
-      <rect x="0" y="14" width="400" height="22" fill="#1a3a6b"/>
-      <text x="200" y="24" text-anchor="middle" fill="white" font-size="11" font-family="Arial,sans-serif" font-weight="bold">DOCUMENTO NACIONAL DE IDENTIDAD</text>
-      <!-- Photo placeholder -->
-      <rect x="20" y="48" width="90" height="110" rx="6" fill="#e0e0e0" stroke="#bbb" stroke-width="1"/>
-      <text x="65" y="100" text-anchor="middle" fill="#999" font-size="11" font-family="Arial,sans-serif">FOTO</text>
-      <text x="65" y="116" text-anchor="middle" fill="#999" font-size="10" font-family="Arial,sans-serif">titular</text>
-      <!-- Fields -->
-      <text x="125" y="58" fill="#666" font-size="8" font-family="Arial,sans-serif">APELLIDOS</text>
-      <text x="125" y="70" fill="#1a1a1a" font-size="12" font-family="Arial,sans-serif" font-weight="bold">GARCÍA LÓPEZ</text>
-      <text x="125" y="86" fill="#666" font-size="8" font-family="Arial,sans-serif">NOMBRE</text>
-      <text x="125" y="98" fill="#1a1a1a" font-size="12" font-family="Arial,sans-serif" font-weight="bold">MARÍA ISABEL</text>
-      <text x="125" y="114" fill="#666" font-size="8" font-family="Arial,sans-serif">SEXO</text>
-      <text x="125" y="126" fill="#1a1a1a" font-size="11" font-family="Arial,sans-serif">M</text>
-      <text x="170" y="114" fill="#666" font-size="8" font-family="Arial,sans-serif">NACIONALIDAD</text>
-      <text x="170" y="126" fill="#1a1a1a" font-size="11" font-family="Arial,sans-serif">ESPAÑOLA</text>
-      <text x="125" y="142" fill="#666" font-size="8" font-family="Arial,sans-serif">FECHA DE NACIMIENTO</text>
-      <text x="125" y="154" fill="#1a1a1a" font-size="11" font-family="Arial,sans-serif">12 05 1990</text>
-      <!-- DNI Number -->
-      <text x="300" y="58" fill="#666" font-size="8" font-family="Arial,sans-serif">NÚM DNI</text>
-      <text x="300" y="72" fill="#1a1a1a" font-size="13" font-family="Arial,sans-serif" font-weight="bold">12345678 Z</text>
-      <!-- SOPORTE - HIGHLIGHTED -->
-      <text x="280" y="114" fill="#666" font-size="8" font-family="Arial,sans-serif">NÚM SOPORTE</text>
-      <!-- Highlight box -->
-      <rect x="274" y="118" width="108" height="22" rx="4" fill="#FFEC99" stroke="#E6A800" stroke-width="2"/>
-      <text x="328" y="134" text-anchor="middle" fill="#1a1a1a" font-size="14" font-family="monospace" font-weight="bold">BAH345212</text>
-      <!-- Arrow pointing to soporte -->
-      <line x1="328" y1="145" x2="328" y2="170" stroke="#D64545" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-      <defs>
-        <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="4" refY="3" orient="auto">
-          <polygon points="0 0, 8 3, 0 6" fill="#D64545"/>
-        </marker>
-      </defs>
-      <text x="328" y="184" text-anchor="middle" fill="#D64545" font-size="11" font-family="Arial,sans-serif" font-weight="bold">← Número de soporte →</text>
-      <text x="328" y="198" text-anchor="middle" fill="#D64545" font-size="10" font-family="Arial,sans-serif">(3 letras + 6 números)</text>
-      <!-- Validity -->
-      <text x="20" y="175" fill="#666" font-size="8" font-family="Arial,sans-serif">VALIDEZ</text>
-      <text x="20" y="187" fill="#1a1a1a" font-size="10" font-family="Arial,sans-serif">10 03 2030</text>
-      <!-- MRZ zone -->
-      <rect x="0" y="210" width="400" height="42" rx="0" fill="#f0f0f0"/>
-      <rect x="0" y="238" width="400" height="14" rx="14" fill="#f0f0f0"/>
-      <text x="20" y="228" fill="#888" font-size="9" font-family="monospace">IDESP&lt;&lt;12345678Z&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</text>
-      <text x="20" y="245" fill="#888" font-size="9" font-family="monospace">9005126M3003101ESP&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</text>
+      <rect width="400" height="252" rx="14" fill="url(#cg)"/>
+      <rect x="0" y="0" width="400" height="34" rx="14" fill="#1a3a6b"/><rect x="0" y="14" width="400" height="20" fill="#1a3a6b"/>
+      <text x="200" y="23" text-anchor="middle" fill="white" font-size="10" font-family="Arial,sans-serif" font-weight="bold">DOCUMENTO NACIONAL DE IDENTIDAD</text>
+      <rect x="16" y="44" width="88" height="108" rx="6" fill="#e0e0e0" stroke="#bbb" stroke-width="1"/>
+      <text x="60" y="94" text-anchor="middle" fill="#999" font-size="11" font-family="Arial,sans-serif">FOTO</text>
+      <text x="60" y="109" text-anchor="middle" fill="#999" font-size="10" font-family="Arial,sans-serif">titular</text>
+      <text x="350" y="50" text-anchor="middle" fill="#666" font-size="7" font-family="Arial,sans-serif">DNI NUM</text>
+      <text x="350" y="63" text-anchor="middle" fill="#1a3a6b" font-size="14" font-family="Arial,sans-serif" font-weight="bold">12345678 Z</text>
+      <text x="118" y="50" fill="#666" font-size="7" font-family="Arial,sans-serif">APELLIDOS</text>
+      <text x="118" y="62" fill="#1a1a1a" font-size="11" font-family="Arial,sans-serif" font-weight="bold">GARCIA LOPEZ</text>
+      <text x="118" y="77" fill="#666" font-size="7" font-family="Arial,sans-serif">NOMBRE</text>
+      <text x="118" y="89" fill="#1a1a1a" font-size="11" font-family="Arial,sans-serif" font-weight="bold">MARIA ISABEL</text>
+      <text x="118" y="104" fill="#666" font-size="7" font-family="Arial,sans-serif">SEXO</text>
+      <text x="118" y="115" fill="#1a1a1a" font-size="10" font-family="Arial,sans-serif">M</text>
+      <text x="165" y="104" fill="#666" font-size="7" font-family="Arial,sans-serif">NACIONALIDAD</text>
+      <text x="165" y="115" fill="#1a1a1a" font-size="10" font-family="Arial,sans-serif">ESPANOLA</text>
+      <text x="118" y="130" fill="#666" font-size="7" font-family="Arial,sans-serif">FECHA DE NACIMIENTO</text>
+      <text x="118" y="142" fill="#1a1a1a" font-size="10" font-family="Arial,sans-serif">12 05 1990</text>
+      <text x="118" y="157" fill="#666" font-size="7" font-family="Arial,sans-serif">NUM SOPORTE</text>
+      <rect x="112" y="160" width="100" height="20" rx="4" fill="#FFEC99" stroke="#E6A800" stroke-width="2"/>
+      <text x="162" y="174" text-anchor="middle" fill="#1a1a1a" font-size="13" font-family="monospace" font-weight="bold">BAH345212</text>
+      <line x1="216" y1="170" x2="256" y2="170" stroke="#D64545" stroke-width="2" marker-end="url(#ah)"/>
+      <text x="330" y="168" text-anchor="middle" fill="#D64545" font-size="10" font-family="Arial,sans-serif" font-weight="bold">Numero de soporte</text>
+      <text x="330" y="180" text-anchor="middle" fill="#D64545" font-size="9" font-family="Arial,sans-serif">(3 letras + 6 numeros)</text>
+      <text x="290" y="130" fill="#666" font-size="7" font-family="Arial,sans-serif">VALIDEZ</text>
+      <text x="290" y="142" fill="#1a1a1a" font-size="10" font-family="Arial,sans-serif">10 03 2030</text>
+      <rect x="0" y="214" width="400" height="38" fill="#eaeaea"/><rect x="0" y="238" width="400" height="14" rx="14" fill="#eaeaea"/>
+      <text x="16" y="230" fill="#888" font-size="8" font-family="monospace">IDESP&lt;&lt;12345678Z&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</text>
+      <text x="16" y="246" fill="#888" font-size="8" font-family="monospace">9005126M3003101ESP&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</text>
     </svg>
     <p style="margin:10px 0 0;font-size:11px;color:#999;text-align:center;">Pulsa fuera de esta ventana para cerrar</p>
   </div>
